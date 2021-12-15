@@ -222,18 +222,21 @@
  - × 阻止创建UWP专用的Swap file（类似页文件Page file）
 
 > 其它（需要手动运行）：
- - × 修复右键新建文本文档项目缺失
- - × 去掉硬盘进度条
- - × 桌面恢复右键排列图标
- - × 启用关机确认
- - × 清除我的电脑/此电脑下快速访问
- - × 右键新建去掉.rtf .psd和联系人
- - × 我的电脑/此电脑USB盘符去重复
+ - × 修复右键新建文本文档项目缺失 ---- Restore Desktop Right click --> New --> .txt context menu
+ - × 去掉硬盘进度条 ----------------- Remove hard disk precentage bar
+ - × 桌面恢复右键排列图标 ------------ Restore Desktop Right click --> sort by context menu
+ - × 启用关机确认 ------------------- Enable shutdown confirmation button
+ - × 清除我的电脑/此电脑下快速访问 ---- Collapse Quick Access ribbon from This PC window
+ - × 右键新建去掉.rtf .psd和联系人 --- Remove Desktop Right click --> New --> .rtf, .psd & Contact context menu
+ - × 我的电脑/此电脑USB盘符去重复 ---- De-redundant the same USB drive showing twice in File Exp. Name Space
 
 #### Credits :
 [@Disassembler0]( https://github.com/Disassembler0 ).
 [Craft Computing]( https://www.youtube.com/channel/UCp3yVOm6A55nx65STpm3tXQ ).
 Windows Debloat Video URL : https://www.youtube.com/watch?v=PdKMiFKGQuc <br>
+
+#### 下载链接：[谷歌盘][3]，QQ群存档(加群问题说明来拿装机优化工具): <a href='https://jq.qq.com/?_wv=1027&k=5YJFXyf'>691892901</a><br>
+那了个么就这样咯~
 
   [0]: https://github.com/Disassembler0/Win10-Initial-Setup-Script
   [1]: https://www.youtube.com/watch?v=PdKMiFKGQuc
