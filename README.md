@@ -1,120 +1,235 @@
-# Windows Decrapifier
-A simple powershell script to debloat Windows.
+# Windows10 超级装机优化工具，内含近 200 项调优和隐私保护设置
 
-### What this script can do :
-1. Enable/Disable Telemetry
-2. Enable/Disable Wi-Fi Sense
-3. Enable/Disable SmartScreen Filter
-4. Enable/Disable Bing Search in Start Menu
-5. Enable/Disable Location Tracking
-6. Enable/Disable Feedback
-7. Enable/Disable Advertising ID
-8. Enable/Disable Cortana
-9. Restrict Windows Update P2P only to local network
-10. Remove AutoLogger file & restrict directory
-11. Stop & disable Diagnostics Tracking Service
-12. Lower/Raise UAC level
-13. Enable/Disable sharing mapped drives between users
-14. Enable/Disable Firewall
-15. Enable/Disable Windows Defender
-16. Enable/Disable Windows Update automatic restart
-17. Stop & disable Home Groups services
-18. Enable/Disable Remote Assistance
-19. Enable/Disable Remote Desktop w/o Network Level Authentication
-20. Enable/Disable Action Center
-21. Enable/Disable Lock screen
-22. Enable/Disable Autoplay
-23. Enable/Disable Autorun for all drives
-24. Enable/Disable Sticky keys prompt
-25. Hide/Show Search button / box
-26. Hide/Show Task View button
-27. Hide/Show small/large icons in taskbar
-28. Hide/Show titles in taskbar
-29. Hide/Show all tray icons
-30. Hide/Show known file extensions
-31. Change default Explorer view to "Computer"/"Quick Access"
-32. Hide/Show Computer shortcut on desktop
-33. Remove Desktop icon from computer namespace
-34. Remove Documents icon from computer namespace
-35. Remove Downloads icon from computer namespace
-36. Remove Downloads icon to computer namespace
-37. Remove Music icon from computer namespace
-38. Remove Pictures icon from computer namespace
-39. Remove Videos icon from computer namespace
-40. Remove secondary en-US keyboard
-41. Enable/Disable/Uninstall OneDrive
-42. Install/Uninstall default Microsoft applications
-43. Uninstall Work Folders Client
-44. Enable/Disable unwanted Windows services
-45. Enable/Disable many of the default apps.
-46. Prevents Apps from re-installing
-47. Remove/Set Password Age Limit
-48. Enable/Disable Privacy Settings Experience
-49. Sets Windows to Dark Mode
+### ❀原创教程，转载本页必须注明链接和作者
+来源于[Github][0]上的Disassembler0，以及[YouTube][1]的Craft Computing。主要进行了翻译，删重复，整体拆分和注释掉可能不用优化的项目（就这样也花了我一整天才搞出来）。整个压缩包内包含了使用说明，优化部分1-7，以及其他可选优化。
 
-### Defaults:
-By default this script has options enabled for a normal user.
-1. Telemetry is disabled.
-2. Wi-Fi sense is diasabled.
-3. SmartScreen Filter is diasabled.
-4. Bing Search diabled in Start Menu.
-5. Location Tracking is diasabled.
-6. Feedback is diasabled.
-7. Advertising ID is diasabled.
-8. Cortana is diasabled.
-9. Restricted Windows Update P2P only to local network.
-10. Removed AutoLogger file and restrict directory.
-11. Stopped and disabled Diagnostics Tracking Service.
-12. Disabled Windows Update automatic restart.
-13. Stoped and disabled Home Groups services.
-14. Show known file extensions.
-15. Change default Explorer view to "Computer"
-16. Disabled OneDrive.
-17. It removes some of the bloatware bundled with Windows 10 :
-    1. 3DBuilder
-    2. BingFinance
-    3. BingNews
-    4. BingSports
-    5. BingWeather
-    6. Getstarted
-    7. People
-    8. SkypeApp
-    9. WindowsMaps
-    10. WindowsPhone
-    11. WindowsSoundRecorder
-    12. AppConnector
-    13. Messaging
-    14. CommsPhone
-    15. CandyCrushSodaSaga
-    16. WindowsFeedbackHub
-    17. Wallet
-    18. GetHelp
-    19. MixedReality
-    20. Everything office related.
-    21. Everything xbox related.
-    22. WindowsCamera
-18. Disables all settings in Privacy Experience.
-19. Disable Remote Assistance
-20. Disable Remote Desktop
+##### 注意，这套代码里包括了Windows10预装应用的卸载，更改注册表，临时关闭文件管理器，更改Windows服务组件等等操作，所以不建议已经用了很久的系统直接拿来运行。
 
-### How to Use:
-1. Download/clone this repo.
-2. Right Click on start button & open Powershell(Admin)
-3. This step depends on where you have downloaded the script.
-    We will assume that you have downloaded this scipt in downloads.
-    ```
-    cd ..
-    cd C:\Users\<Your windows username>\Downloads\
-    cd .\Windows-Decrapifier-main\Windows-Decrapifier-main\
-    ```
-4. Type the following commands :
-    ```
-    Set-ExecutionPolicy Unrestricted
-    ```
-    ```
-    .\decrapify.ps1
-    ```
-*Note : Make sure to enable/disable the features you don't need by commenting/uncommenting them out.*
+#### 优化项目
+
+> 1「隐私」：
+ - √ 关闭信息收集 --------------------- Disable Telemetry（关后无法加入Insider Program）
+ - √ 关闭Wi-Fi密码共享 ---------------- Disable Wi-Fi Sense
+ - √ 禁用Windows Defender阻止应用运行 - Disable SmartScreen Filter
+ - √ 关闭开始菜单内置Bing搜索 --------- Disable Start Menu Bing Search
+ - √ 禁用地理位置汇报 ----------------- Disable Location Tracking
+ - √ 禁用微软反馈 --------------------- Disable Feedback
+ - √ 禁用广告识别 --------------------- Disable Advertising ID
+ - √ 禁用小娜 ------------------------- Disable Cortana
+ - × 仅用本地网P2P更新Windows --------- Restrict Windows Update P2P only to local network
+ - √ 移除开机内核加载log生成+阻止创建 -- Remove AutoLogger file and restrict directory
+ - √ 禁用疑难解答信息收集 ------------- Stop and disable Diagnostics Tracking Service
+
+> 2「一般Windows服务」：
+ - √ 降低用户账户控制UAC通知"设置变更弹窗"的弹出级别 - Lower UAC level
+ - √ 启用本机多用户共享本地网盘 -------------------- Enable sharing mapped drives between users
+ - × 关闭防火墙 ----------------------------------- Disable Firewall
+ - × 禁用Win自带杀软 ------------------------------ Disable Windows Defender
+ - √ 关闭Windows更新后自重启 ---------------------- Disable Windows Update automatic restart
+ - √ 关闭Windows家庭组相关服务 --------------------- Stop and disable Home Groups services
+ - √ 降低DMWAPPUSHService启动的优先级
+
+> 3「任务栏和文件管理器」：
+ - × 禁用通知中心（右下角消息）----------------- Disable Action Center
+ - × 禁用锁定（非公司电脑用） ------------------ Disable Lock screen
+ - √ 禁用自动播放（USB插入后自动扫描媒体）------- Disable Autoplay
+ - × 禁用程序自启动+CDROM双击直接打开exe ------- Disable Autorun for all drives
+ - √ 关闭粘滞键命令 --------------------------- Disable Sticky keys prompt
+ - √ 隐藏搜索框（开始菜单键直接输入即搜索）------ Hide Search button / box
+ - × 任务栏移除任务视图按钮 -------------------- Hide Task View button
+ - √ 小任务栏 --------------------------------- Show small icons in taskbar
+ - √ 任务栏程序满后再合并 ---------------------- Show titles in taskbar
+ - √ 隐藏所有小三角内图标 ---------------------- Hide tray icons as needed
+ - √ 显示后缀名 ------------------------------- Show known file extensions
+ - × 显示隐藏文件（系统用但影响文件夹和桌面排版）- Show hidden files
+ - √ 文件管理器默认打开我的电脑/此电脑 ---------- Change default Explorer view to "Computer"
+ - √ 桌面显示我的电脑/此电脑 ------------------- Show Computer shortcut on desktop
+ - × 文件管理器左栏（Shell NameSpace）移除桌面 - Remove Desktop icon from computer namespace
+ - × 文件管理器左栏（Shell NameSpace）移除文档 - Remove Documents icon from computer namespace
+ - × 文件管理器左栏（Shell NameSpace）移除下载 - Remove Downloads icon from computer namespace
+ - × 文件管理器左栏（Shell NameSpace）移除图片 - Remove Pictures icon from computer namespace
+ - × 文件管理器左栏（Shell NameSpace）移除音乐 - Remove Music icon from computer namespace
+ - × 文件管理器左栏（Shell NameSpace）移除视频 - Remove Video icon from computer namespace
+ - × 添加副英语（美国）键盘（方便替换微软键盘为第三方用）- Add secondary en-US keyboard
+
+> 4「卸载预装和赞助应用」：
+ - √ 禁用并彻底卸载OneDrive --- Disable and completely uninstall OneDrive
+ - × 卸载Windows自带WMP播放器 - Uninstall Windows Media Player
+ - √ 卸载工作文件夹功能 ------- Uninstall Work Folders Client
+> 
+> · 关闭以下Windows服务：
+ - √ 疑难解答的内核ETW信息收集 ----------------- Diagnostics Hub Standard Collector Service
+ - √ 无线联网准入链接推送（公用无线网同意条款用）- WAP Push Message Routing Service
+ - √ 缓存地图管理器 --------------------------- Downloaded Maps Manager
+ - × 应用程序获知并共用单一TCP端口服务 --------- Net.Tcp Port Sharing Service
+ - √ 远程桌面 -------------------------------- Routing and Remote Access
+ - × 远程注册表 ------------------------------ Remote Registry
+ - √ 外网已知连接共享（电脑做网关）------------- Internet Connection Sharing (ICS)
+ - × 内网分布式链接跟踪（活动目录等功能，加入域后用）Distributed Link Tracking Client
+ - × 生物识别服务（指纹，脸部识别）------------- Windows Biometric Service
+ - × 无线网自动配置 --------------------------- WLAN AutoConfig
+ - √ Win自带播放器WMP的网络共享 ---------------- Windows Media Player Network Sharing
+ - × 安全中心 --------------------------------- Windows Security Center Service
+ - × 搜索 ------------------------------------- Windows Search
+ - √ Xbox Live Auth Manager
+ - √ Xbox Live Game Save Service
+ - √ Xbox Live Networking Service
+ - √ 流量监控 --------------------------------- Windows Network Data Usage Monitor
+> 
+ - √ 阻止Windows更新的自动下载及其P2P上传 ----------- Optimizes Windows updates by disabling automatic download and seeding
+ - × 禁止Windows自动更新硬件驱动 -------------------- Disable automatic driver update
+> 
+> · 卸载以下Windows预装+赞助商应用：
+ - √ Microsoft.3DBuilder
+ - √ Microsoft.Advertising.Xaml
+ - √ Microsoft.Appconnector
+ - √ Microsoft.BingFinance
+ - √ Microsoft.BingNews
+ - √ Microsoft.BingSports
+ - √ Microsoft.BingTranslator
+ - √ Microsoft.BingWeather
+ - × Microsoft.FreshPaint
+ - √ Microsoft.GamingServices
+ - √ Microsoft.Microsoft3DViewer
+ - √ Microsoft.WindowsFeedbackHub
+ - √ Microsoft.MicrosoftOfficeHub
+ - √ Microsoft.MixedReality.Portal
+ - √ Microsoft.MicrosoftPowerBIForWindows
+ - √ Microsoft.MicrosoftSolitaireCollection
+ - × Microsoft.MicrosoftStickyNotes
+ - √ Microsoft.MinecraftUWP
+ - √ Microsoft.NetworkSpeedTest
+ - √ Microsoft.Office.OneNote
+ - √ Microsoft.People
+ - √ Microsoft.Print3D
+ - √ Microsoft.SkypeApp
+ - √ Microsoft.Wallet
+ - × Microsoft.Windows.Photos
+ - × Microsoft.WindowsAlarms
+ - × Microsoft.WindowsCalculator
+ - × Microsoft.WindowsCamera
+ - √ microsoft.windowscommunicationsapps
+ - √ Microsoft.WindowsMaps
+ - √ Microsoft.WindowsPhone
+ - √ Microsoft.WindowsSoundRecorder
+ - × Microsoft.WindowsStore
+ - √ Microsoft.Xbox.TCUI
+ - √ Microsoft.XboxApp
+ - √ Microsoft.XboxGameOverlay
+ - √ Microsoft.XboxGamingOverlay
+ - √ Microsoft.XboxSpeechToTextOverlay
+ - √ Microsoft.YourPhone
+ - √ Microsoft.ZuneMusic
+ - √ Microsoft.ZuneVideo
+ - √ Microsoft.Windows.CloudExperienceHost
+ - √ Microsoft.Windows.ContentDeliveryManager
+ - √ Microsoft.Windows.PeopleExperienceHost
+ - √ Microsoft.XboxGameCallableUI
+ - √ Microsoft.CommsPhone
+ - √ Microsoft.ConnectivityStore
+ - √ Microsoft.GetHelp
+ - √ Microsoft.Getstarted
+ - √ Microsoft.Messaging
+ - √ Microsoft.Office.Sway
+ - √ Microsoft.OneConnect
+ - √ Microsoft.WindowsFeedbackHub
+ - √ Microsoft.Microsoft3DViewer
+ - × Microsoft.MSPaint
+ - √ Microsoft.BingFoodAndDrink
+ - √ Microsoft.BingHealthAndFitness
+ - √ Microsoft.BingTravel
+ - √ Microsoft.WindowsReadingList
+ - √ Microsoft.MixedReality.Portal
+ - √ Microsoft.ScreenSketch
+ - √ Microsoft.XboxGamingOverlay
+ - √ Microsoft.YourPhone
+ - √ 2FE3CB00.PicsArt-PhotoStudio
+ - √ 46928bounde.EclipseManager
+ - √ 4DF9E0F8.Netflix
+ - √ 613EBCEA.PolarrPhotoEditorAcademicEdition
+ - √ 6Wunderkinder.Wunderlist
+ - √ 7EE7776C.LinkedInforWindows
+ - √ 89006A2E.AutodeskSketchBook
+ - √ 9E2F88E3.Twitter
+ - √ A278AB0D.DisneyMagicKingdoms
+ - √ A278AB0D.MarchofEmpires
+ - √ ActiproSoftwareLLC.562882FEEB491
+ - √ CAF9E577.Plex"
+ - √ ClearChannelRadioDigital.iHeartRadio
+ - √ D52A8D61.FarmVille2CountryEscape
+ - √ D5EA27B7.Duolingo-LearnLanguagesforFree
+ - √ DB6EA5DB.CyberLinkMediaSuiteEssentials
+ - √ DolbyLaboratories.DolbyAccess
+ - √ DolbyLaboratories.DolbyAccess
+ - √ Drawboard.DrawboardPDF
+ - √ Facebook.Facebook
+ - √ Fitbit.FitbitCoach
+ - √ Flipboard.Flipboard
+ - √ GAMELOFTSA.Asphalt8Airborne
+ - √ KeeperSecurityInc.Keeper
+ - √ NORDCURRENT.COOKINGFEVER
+ - √ PandoraMediaInc.29680B314EFC2
+ - √ Playtika.CaesarsSlotsFreeCasino
+ - √ ShazamEntertainmentLtd.Shazam
+ - √ SlingTVLLC.SlingTV
+ - √ SpotifyAB.SpotifyMusic
+ - × TheNewYorkTimes.NYTCrossword
+ - √ ThumbmunkeysLtd.PhototasticCollage
+ - √ TuneIn.TuneInRadio
+ - √ WinZipComputing.WinZipUniversal
+ - √ XINGAG.XING
+ - √ flaregamesGmbH.RoyalRevolt2
+ - √ king.com.*
+ - √ king.com.BubbleWitch3Saga
+ - √ king.com.CandyCrushSaga
+ - √ king.com.CandyCrushSodaSaga
+ - × Microsoft.BioEnrollment
+ - × Microsoft.MicrosoftEdge
+ - × Microsoft.Windows.Cortana
+ - × Microsoft.WindowsFeedback
+ - × Microsoft.XboxGameCallableUI
+ - × Microsoft.XboxIdentityProvider
+ - × Windows.ContactSupport"
+> 
+ - √ 阻止Windows重装卸载的预装应用 ----------------- Prevents Apps from re-installing
+ - √ 阻止Windows重装卸载的推荐应用 ----------------- Prevents "Suggested Applications" returning
+
+> 5「开始菜单」：
+ - √ 密码永不过期 ---------------------------------- Password never expires
+ - √ 本机所有（包括未来添加）用户移除开始菜单所有瓷块 - Remove Start Menu Tiles
+ - √ 移除现有开始菜单排版文件 ----------------------- Delete layout file if it already exists
+ - √ 清除开始菜单排版缓存
+ - √ 移除正常安装要求输入的隐私设置（音识，位置，寻回，信息搜集，Ink/输入搜集等）- Disable Privacy Settings Experience
+
+> 6「黑色主题」：
+ - √ 启用黑色主题 ---------------------------------- Windows Enable Dark Mode
+
+> 7「UWP应用隐私」：
+ - √ 禁用UWP应用后台自启动
+ - √ 禁用UWP应用声纹启动
+ - √ 禁用UWP应用通知信息访问权限
+ - √ 禁用UWP应用账户信息访问权限
+ - √ 禁用UWP应用联系人访问权限
+ - √ 禁用UWP应用日历信息访问权限
+ - √ 禁用UWP应用电话簿访问权限
+ - √ 禁用UWP应用通话记录访问权限
+ - √ 禁用UWP应用电子邮箱访问权限
+ - √ 禁用UWP应用的短信访问权限
+ - √ 禁用UWP应用的无线传输数据（如蓝牙）访问权限
+ - √ 禁用UWP应用的外部设备同步权限
+ - √ 禁用UWP应用的疑难解答信息访问权限
+ - × 禁用UWP应用的库和文件系统访问权限
+ - × 阻止创建UWP专用的Swap file（类似页文件Page file）
+
+> 其它（需要手动运行）：
+ - × 修复右键新建文本文档项目缺失
+ - × 去掉硬盘进度条
+ - × 桌面恢复右键排列图标
+ - × 启用关机确认
+ - × 清除我的电脑/此电脑下快速访问
+ - × 右键新建去掉.rtf .psd和联系人
+ - × 我的电脑/此电脑USB盘符去重复
+
 #### Credits :
 [@Disassembler0]( https://github.com/Disassembler0 ).
 [Craft Computing]( https://www.youtube.com/channel/UCp3yVOm6A55nx65STpm3tXQ ).
