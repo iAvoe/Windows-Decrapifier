@@ -1,7 +1,7 @@
 # Windows10 超级装机优化工具，内含近 200 项调优和隐私保护设置
 
 ### ❀原创教程，转载本页必须注明链接和作者
-来源于[Github][0]上的Disassembler0，以及[YouTube][1]的Craft Computing。主要进行了翻译，删重复，整体拆分和注释掉可能不用优化的项目（就这样也花了我一整天才搞出来）。整个压缩包内包含了使用说明，优化部分1-7，以及其他可选优化。
+来源于[Github/Disassembler0][0]，及[YouTube/Craft Computing][1]。主要进行了翻译，删重复，拆分以便编辑和注释掉可能不用优化的项目（就这样也花了我一整天才搞出来）。整个压缩包内包含了使用说明，优化部分1-7，以及其他可选优化。
 
 ##### 注意，这套代码里包括了Windows10预装应用的卸载，更改注册表，临时关闭文件管理器，更改Windows服务组件等等操作，所以不建议已经用了很久的系统直接拿来运行。
 
@@ -234,3 +234,8 @@
 [@Disassembler0]( https://github.com/Disassembler0 ).
 [Craft Computing]( https://www.youtube.com/channel/UCp3yVOm6A55nx65STpm3tXQ ).
 Windows Debloat Video URL : https://www.youtube.com/watch?v=PdKMiFKGQuc <br>
+
+  [0]: https://github.com/Disassembler0/Win10-Initial-Setup-Script
+  [1]: https://www.youtube.com/watch?v=PdKMiFKGQuc
+  [2]: 
+  [3]: https://drive.google.com/file/d/1l2_2hirNwmSE8_rsoL4lHU_Dkkt3ABUY/view?usp=sharing
