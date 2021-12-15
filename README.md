@@ -235,10 +235,9 @@
 [Craft Computing]( https://www.youtube.com/channel/UCp3yVOm6A55nx65STpm3tXQ ).
 Windows Debloat Video URL : https://www.youtube.com/watch?v=PdKMiFKGQuc <br>
 
-#### 下载链接：[谷歌盘][3]，QQ群存档(加群问题说明来拿装机优化工具): <a href='https://jq.qq.com/?_wv=1027&k=5YJFXyf'>691892901</a><br>
+#### 下载链接：[谷歌盘][2]，QQ群存档(加群问题说明来拿装机优化工具): <a href='https://jq.qq.com/?_wv=1027&k=5YJFXyf'>691892901</a><br>
 那了个么就这样咯~
 
   [0]: https://github.com/Disassembler0/Win10-Initial-Setup-Script
   [1]: https://www.youtube.com/watch?v=PdKMiFKGQuc
-  [2]: 
-  [3]: https://drive.google.com/file/d/1l2_2hirNwmSE8_rsoL4lHU_Dkkt3ABUY/view?usp=sharing
+  [2]: https://drive.google.com/file/d/1l2_2hirNwmSE8_rsoL4lHU_Dkkt3ABUY/view?usp=sharing
