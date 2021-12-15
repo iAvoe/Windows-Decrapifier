@@ -230,12 +230,12 @@
  - × 右键新建去掉.rtf .psd和联系人 --- Remove Desktop Right click --> New --> .rtf, .psd & Contact context menu
  - × 我的电脑/此电脑USB盘符去重复 ---- De-redundant the same USB drive showing twice in File Exp. Name Space
 
-#### Credits :
+### Credits :
 [@Disassembler0]( https://github.com/Disassembler0 ).
 [Craft Computing]( https://www.youtube.com/channel/UCp3yVOm6A55nx65STpm3tXQ ).
 Windows Debloat Video URL : https://www.youtube.com/watch?v=PdKMiFKGQuc <br>
 
-#### 下载链接：[谷歌盘][2]，QQ群存档(加群问题说明来拿装机优化工具): <a href='https://jq.qq.com/?_wv=1027&k=5YJFXyf'>691892901</a><br>
+#### 下载链接：[谷歌盘][2]，QQ群存档(回答加群问题: x264 是干什么用的): <a href='https://jq.qq.com/?_wv=1027&k=5YJFXyf'>691892901</a><br>
 那了个么就这样咯~
 
   [0]: https://github.com/Disassembler0/Win10-Initial-Setup-Script
